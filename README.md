@@ -1,4 +1,4 @@
-periodicjs.ext.acl
-==================
+periodicjs.ext.user_acces_control
+======================
 
-access control functionality, with groups, roles and privileges 
+user access control for periodic
