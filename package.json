@@ -1,7 +1,7 @@
 {
   "name": "periodicjs.ext.user_acces_control",
   "description": "User access control for Periodicjs",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "main": "index.js",
   "engines": {
     "node": ">=0.10.x"
@@ -11,10 +11,22 @@
     "email": "yaw.etse@gmail.com",
     "url": "http://about.me/yawjosephetse"
   },
-  "repository": {},
-  "scripts": {},
-  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/typesettin/periodicjs.ext.user_acces_control.git"
+  },
+  "scripts": {
+    "postinstall": "node install.js",
+    "postuninstall": "node uninstall.js"
+  },
+  "dependencies": {
+    "periodicjs.core.controllerhelper": "~1.1.1",
+    "periodicjs.core.utilities": "~1.1.2"
+  },
   "devDependencies": {},
+  "peerDependencies": {
+    "periodicjs.ext.login": "~1.1.10"
+  },
   "keywords": [
     "periodicjs"
   ]
