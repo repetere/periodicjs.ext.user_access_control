@@ -1,5 +1,5 @@
 {
-  "name": "periodicjs.ext.user_acces_control",
+  "name": "periodicjs.ext.user_access_control",
   "description": "User access control for Periodicjs",
   "version": "1.0.2",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/typesettin/periodicjs.ext.user_acces_control.git"
+    "url": "git://github.com/typesettin/periodicjs.ext.user_access_control.git"
   },
   "scripts": {
     "test": "mocha -R spec --recursive",
