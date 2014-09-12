@@ -399,7 +399,7 @@ var loadUserRoles = function(req,res,next){
 var check_user_access = function(req,res,next){
     var httpmethod = req.method,
         httpurl = path.resolve(req.originalUrl.toLowerCase());
-        console.log(req.user.acounttype);
+        // console.log(req.user.acounttype);
     // console.log(req.method,req.originalUrl);
     // http://stackoverflow.com/questions/6579308/javascript-inoperant-switch-case-with-a-regex
     // var testme = "pwd_foo", response;
