@@ -1,7 +1,7 @@
 {
   "name": "periodicjs.ext.user_access_control",
   "description": "User access control for Periodicjs",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "main": "index.js",
   "engines": {
     "node": ">=0.10.x"
@@ -33,5 +33,31 @@
   },
   "keywords": [
     "periodicjs"
-  ]
+  ],
+  "gitHead": "324e13b1697cf903eeb28505e783f34e021b3cd5",
+  "bugs": {
+    "url": "https://github.com/typesettin/periodicjs.ext.user_access_control/issues"
+  },
+  "homepage": "https://github.com/typesettin/periodicjs.ext.user_access_control",
+  "_id": "periodicjs.ext.user_access_control@1.5.3",
+  "_shasum": "c9ec50be5c012f93a32cb45bea91dcc804a07e5b",
+  "_from": "periodicjs.ext.user_access_control@1.5.3",
+  "_npmVersion": "1.5.0-alpha-4",
+  "_npmUser": {
+    "name": "yawetse",
+    "email": "yaw.etse@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "yawetse",
+      "email": "yaw.etse@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "c9ec50be5c012f93a32cb45bea91dcc804a07e5b",
+    "tarball": "http://registry.npmjs.org/periodicjs.ext.user_access_control/-/periodicjs.ext.user_access_control-1.5.3.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/periodicjs.ext.user_access_control/-/periodicjs.ext.user_access_control-1.5.3.tgz",
+  "readme": "ERROR: No README data found!"
 }

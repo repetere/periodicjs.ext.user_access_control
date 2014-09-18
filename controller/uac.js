@@ -373,23 +373,33 @@ var loadUserRoles = function(req,res,next){
     req.controllerData = (req.controllerData)?req.controllerData:{};
 
     if(req.isAuthenticated()){
-        User.populate(req.user,{path:'userroles.privileges',model:'Userprivilege'},function(err,populateduser){
-            if(err){
-                next(err);
-            }
-            else{
-                req.user.privileges = {};
-                for(var i = 0; i < populateduser.userroles.length; i++){
-                    requserroles = populateduser.userroles[i];
-                    for (var j = 0; j < requserroles.privileges.length; j++){
-                        req.user.privileges[requserroles.privileges[j].userprivilegeid] = requserroles.privileges[j];
-                    }
+        if(req.session && req.session.userprivilegesdata /* && true===false */){
+            req.user.privileges =  req.session.userprivilegesdata;
+            req.controllerData.userprivileges = req.session.userprivilegesdata;
+            next();
+        }
+        else{
+            User.populate(req.user,{path:'userroles.privileges',model:'Userprivilege'},function(err,populateduser){
+                if(err){
+                    next(err);
                 }
-                req.controllerData.userprivileges = req.user.privileges;
-                // console.log("req.user.privileges",req.user.privileges);
-                next();
-            }
-        });
+                else{
+                    req.user.privileges = {};
+                    for(var i = 0; i < populateduser.userroles.length; i++){
+                        requserroles = populateduser.userroles[i];
+                        for (var j = 0; j < requserroles.privileges.length; j++){
+                            req.user.privileges[requserroles.privileges[j].userprivilegeid] = requserroles.privileges[j];
+                        }
+                    }
+                    req.session.userprivilegesdata = req.user.privileges;
+                    req.controllerData.userprivileges = req.session.userprivilegesdata;
+
+                    // req.controllerData.userprivileges = req.user.privileges;
+                    // console.log("req.user.privileges",req.user.privileges);
+                    next();
+                }
+            });
+        }
     }
     else{
         next(); 
