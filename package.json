@@ -1,7 +1,7 @@
 {
   "name": "periodicjs.ext.user_access_control",
   "description": "A user access control extension for Periodicjs that uses user roles and user privleges to controll access",
-  "version": "1.90.20",
+  "version": "1.90.21",
   "main": "index.js",
   "engines": {
     "node": ">=0.10.x"
@@ -58,9 +58,9 @@
     "url": "https://github.com/typesettin/periodicjs.ext.user_access_control/issues"
   },
   "homepage": "https://github.com/typesettin/periodicjs.ext.user_access_control",
-  "_id": "periodicjs.ext.user_access_control@1.5.3",
-  "_shasum": "c9ec50be5c012f93a32cb45bea91dcc804a07e5b",
-  "_from": "periodicjs.ext.user_access_control@1.5.3",
+  "_id": "periodicjs.ext.user_access_control@1.90.20",
+  "_shasum": "b39ccb156d0b25c41a665bbadb2debdbbed534ed",
+  "_from": "periodicjs.ext.user_access_control@1.90.20",
   "_npmVersion": "1.5.0-alpha-4",
   "_npmUser": {
     "name": "yawetse",
@@ -73,10 +73,10 @@
     }
   ],
   "dist": {
-    "shasum": "c9ec50be5c012f93a32cb45bea91dcc804a07e5b",
-    "tarball": "http://registry.npmjs.org/periodicjs.ext.user_access_control/-/periodicjs.ext.user_access_control-1.5.3.tgz"
+    "shasum": "b39ccb156d0b25c41a665bbadb2debdbbed534ed",
+    "tarball": "http://registry.npmjs.org/periodicjs.ext.user_access_control/-/periodicjs.ext.user_access_control-1.90.20.tgz"
   },
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/periodicjs.ext.user_access_control/-/periodicjs.ext.user_access_control-1.5.3.tgz",
+  "_resolved": "https://registry.npmjs.org/periodicjs.ext.user_access_control/-/periodicjs.ext.user_access_control-1.90.20.tgz",
   "readme": "ERROR: No README data found!"
 }

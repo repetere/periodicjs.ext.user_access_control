@@ -3,6 +3,7 @@
 var path = require('path'),
     Utilities = require('periodicjs.core.utilities'),
     ControllerHelper = require('periodicjs.core.controller'),
+    userController,
     CoreUtilities,
     CoreController,
     appSettings,
@@ -323,47 +324,16 @@ var usergroupResults = function(req,res,next){
  */
 var loadUacUsers = function(req,res,next){
     var query,
-        offset = req.query.offset,
-        sort = req.query.sort,
-        limit = req.query.limit,
         population = 'extensionattributes userasset userroles',
-        User = mongoose.model('User'),
-        searchRegEx = new RegExp(CoreUtilities.stripTags(req.query.search), 'gi');
+        orQuery = [];
 
-    req.controllerData = (req.controllerData)?req.controllerData:{};
-    if(req.query.search===undefined || req.query.search.length<1){
-        query={};
-    }
-    else{
-        query = {
-            $or: [{
-                title: searchRegEx,
-                }, {
-                'name': searchRegEx,
-            }]
-        };
-    }
-
-    CoreController.searchModel({
-        model:User,
-        query:query,
-        sort:sort,
-        limit:limit,
-        offset:offset,
-        population:population,
-        callback:function(err,documents){
-            if(err){
-                CoreController.handleDocumentQueryErrorResponse({
-                    err:err,
-                    res:res,
-                    req:req
-                });
-            }
-            else{
-                req.controllerData.users = documents;
-                next();
-            }
-        }
+    userController.getUsersData({
+        req: req,
+        res: res,
+        next: next,
+        population: population,
+        query: query,
+        orQuery: orQuery
     });
 };
 
@@ -726,6 +696,7 @@ var controller = function(resources){
     Userrole = mongoose.model('Userrole');
     Userprivilege = mongoose.model('Userprivilege');
     Usergroup = mongoose.model('Usergroup');
+    userController = require(path.resolve(process.cwd(),'app/controller/user'))(resources);
 
     return{
         createUserprivilege:createUserprivilege,
