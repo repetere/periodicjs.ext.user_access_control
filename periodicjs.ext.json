@@ -2,6 +2,6 @@
 	"periodicCompatibility":"1.90.0",
 	"periodicDependencies":[{
     "extname":"periodicjs.ext.login",
-    "version":"~1.90.20"
+    "version":"~1.90.26"
   }]
 }

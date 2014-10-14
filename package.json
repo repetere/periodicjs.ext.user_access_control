@@ -1,7 +1,7 @@
 {
   "name": "periodicjs.ext.user_access_control",
   "description": "A user access control extension for Periodicjs that uses user roles and user privleges to controll access",
-  "version": "1.90.21",
+  "version": "1.90.26",
   "main": "index.js",
   "engines": {
     "node": ">=0.10.x"
@@ -24,7 +24,7 @@
     "async": "0.9.0",
     "fs-extra": "0.9.1",
     "periodicjs.core.controller": "~1.90.10",
-    "periodicjs.core.extensions": "~1.90.10",
+    "periodicjs.core.extensions": "~1.90.16",
     "periodicjs.core.utilities": "~1.90.10"
   },
   "devDependencies": {
@@ -48,10 +48,10 @@
     "uglifyify": "^2.5.0"
   },
   "peerDependencies": {
-    "periodicjs.ext.login": "~1.90.20"
+    "periodicjs.ext.login": "~1.90.26"
   },
   "keywords": [
-    "periodicjs"
+    "periodicjs","user access control","content management","wordpress","cms","drupal"
   ],
   "gitHead": "324e13b1697cf903eeb28505e783f34e021b3cd5",
   "bugs": {
