@@ -17,6 +17,10 @@ module.exports = function (periodic) {
 		userroleController = require('./controller/userrole')(periodic),
 		uacController = require('./controller/uac')(periodic);
 
+	adminRouter.get('*', global.CoreCache.disableCache);
+	adminRouter.post('*', global.CoreCache.disableCache);
+	periodicRouter.get('*', global.CoreCache.disableCache);
+	periodicRouter.post('*', global.CoreCache.disableCache);
 	adminRouter.all('*', authController.ensureAuthenticated, uacController.loadUserRoles, uacController.check_user_access);
 
 	//user roles
