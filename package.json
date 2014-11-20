@@ -1,7 +1,7 @@
 {
   "name": "periodicjs.ext.user_access_control",
   "description": "A user access control extension for Periodicjs that uses user roles and user privleges to controll access",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "main": "index.js",
   "engines": {
     "node": ">=0.10.x"

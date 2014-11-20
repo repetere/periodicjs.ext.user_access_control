@@ -12,7 +12,7 @@
 module.exports = function (periodic) {
 	// express,app,logger,config/settings,db
 	var adminRouter = periodic.express.Router(),
-		periodicRouter = periodic.express.Router(),
+		// periodicRouter = periodic.express.Router(),
 		authController = require('../periodicjs.ext.login/controller/auth')(periodic),
 		userroleController = require('./controller/userrole')(periodic),
 		uacController = require('./controller/uac')(periodic);
@@ -20,7 +20,7 @@ module.exports = function (periodic) {
 	adminRouter.get('*', global.CoreCache.disableCache);
 	adminRouter.post('*', global.CoreCache.disableCache);
 	// periodicRouter.get('*', global.CoreCache.disableCache);
-	periodicRouter.post('*', global.CoreCache.disableCache);
+	// periodicRouter.post('*', global.CoreCache.disableCache);
 	adminRouter.all('*', authController.ensureAuthenticated, uacController.loadUserRoles, uacController.check_user_access);
 
 	//user roles
@@ -31,15 +31,15 @@ module.exports = function (periodic) {
 	adminRouter.post('/userrole/new', userroleController.create);
 	adminRouter.post('/userrole/edit', userroleController.update);
 	adminRouter.post('/userrole/:id/delete', uacController.loadUserrole, userroleController.remove);
-	periodicRouter.get('/userroles/search.:ext', global.CoreCache.disableCache, uacController.loadUserroles, uacController.userroleSearchResults);
-	periodicRouter.get('/userroles/search', global.CoreCache.disableCache, uacController.loadUserroles, uacController.userroleSearchResults);
+	adminRouter.get('/userroles/search.:ext', global.CoreCache.disableCache, uacController.loadUserroles, uacController.userroleSearchResults);
+	adminRouter.get('/userroles/search', global.CoreCache.disableCache, uacController.loadUserroles, uacController.userroleSearchResults);
 
 
 	//user priviliges
-	periodicRouter.get('/userprivileges/search.:ext', global.CoreCache.disableCache, uacController.loadUserprivileges, uacController.userprivilegeSearchResults);
-	periodicRouter.get('/userprivileges/search', global.CoreCache.disableCache, uacController.loadUserprivileges, uacController.userprivilegeSearchResults);
+	adminRouter.get('/userprivileges/search.:ext', global.CoreCache.disableCache, uacController.loadUserprivileges, uacController.userprivilegeSearchResults);
+	adminRouter.get('/userprivileges/search', global.CoreCache.disableCache, uacController.loadUserprivileges, uacController.userprivilegeSearchResults);
 
 	//add routes
 	periodic.app.use('/p-admin', adminRouter);
-	periodic.app.use(periodicRouter);
+	// periodic.app.use(periodicRouter);
 };
