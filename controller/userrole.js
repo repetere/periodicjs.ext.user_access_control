@@ -1,8 +1,6 @@
 'use strict';
 
-var Utilities = require('periodicjs.core.utilities'),
-    ControllerHelper = require('periodicjs.core.controller'),
-    CoreUtilities,
+var CoreUtilities,
     CoreController,
     appSettings,
     mongoose,
@@ -202,8 +200,8 @@ var controller = function(resources){
     logger = resources.logger;
     mongoose = resources.mongoose;
     appSettings = resources.settings;
-    CoreController = new ControllerHelper(resources);
-    CoreUtilities = new Utilities(resources);
+    CoreController = resources.core.controller;
+    CoreUtilities = resources.core.utilities;
     Userrole = mongoose.model('Userrole');
     Userprivilege = mongoose.model('Userprivilege');
     // Usergroup = mongoose.model('Usergroup');
