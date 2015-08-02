@@ -1,8 +1,6 @@
 'use strict';
 
 var path = require('path'),
-    Utilities = require('periodicjs.core.utilities'),
-    ControllerHelper = require('periodicjs.core.controller'),
     userController,
     CoreUtilities,
     CoreController,
@@ -83,6 +81,12 @@ var createUserprivilege = function(req, res, next) {
     createUACObject(req, res, next, reqcontrollerdataobj, Userprivilege, '/p-admin/uac/userprivilege/edit/');
 };
 
+var skipInvalid = function(req,res, next){
+    req.controllerData = (req.controllerData)?req.controllerData:{};
+    req.controllerData.skipIfInvalid =true;
+    next();
+};
+
 /**
  * loads a UAC document (privilege,role or group) with population
  * @param  {object} req 
@@ -107,6 +111,9 @@ var loadUacObject = function(req,res,next,population,model,objecttype){
                     res:res,
                     req:req
                 });
+            }
+            else if(!doc && req.controllerData.skipIfInvalid){
+                next();
             }
             else if(!doc){
                 CoreController.handleDocumentQueryErrorResponse({
@@ -690,15 +697,17 @@ var controller = function(resources){
     logger = resources.logger;
     mongoose = resources.mongoose;
     appSettings = resources.settings;
-    CoreController = new ControllerHelper(resources);
-    CoreUtilities = new Utilities(resources);
+    CoreController = resources.core.controller;
+    CoreUtilities = resources.core.utilities;
     User = mongoose.model('User');
     Userrole = mongoose.model('Userrole');
     Userprivilege = mongoose.model('Userprivilege');
     Usergroup = mongoose.model('Usergroup');
-    userController = require(path.resolve(process.cwd(),'app/controller/user'))(resources);
+    userController = resources.app.controller.native.user;
 
     return{
+        skipInvalid: skipInvalid,
+
         createUserprivilege:createUserprivilege,
         loadUserprivilege:loadUserprivilege,
         loadUserprivileges:loadUserprivileges,
