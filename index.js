@@ -14,6 +14,13 @@ module.exports = function (periodic) {
 	periodic.app.controller.extension.user_access_control = {
 		uac: require('./controller/uac')(periodic)
 	};
+	var adminRouter = periodic.express.Router(),
+		authController = periodic.app.controller.extension.login.auth,
+		uacController = periodic.app.controller.extension.user_access_control.uac;
+
+	adminRouter.all('*', authController.ensureAuthenticated, uacController.loadUserRoles, uacController.check_user_access);
+	
+	periodic.app.use('/p-admin', adminRouter);
 
 	//add routes
 	return periodic;
