@@ -693,17 +693,19 @@ var check_user_access = function(req,res,next){
  * @param  {object} resources variable injection from current periodic instance with references to the active logger and mongo session
  * @return {object}           userlogin
  */
-var controller = function(resources){
+var controller = function(resources,UserModel,UserController){
     logger = resources.logger;
     mongoose = resources.mongoose;
     appSettings = resources.settings;
     CoreController = resources.core.controller;
     CoreUtilities = resources.core.utilities;
-    User = mongoose.model('User');
+    User = UserModel || mongoose.model('User');
     Userrole = mongoose.model('Userrole');
     Userprivilege = mongoose.model('Userprivilege');
     Usergroup = mongoose.model('Usergroup');
-    userController = resources.app.controller.native.user;
+    userController = UserController || resources.app.controller.native.user;
+
+    // console.log('userController',userController);
 
     return{
         skipInvalid: skipInvalid,
