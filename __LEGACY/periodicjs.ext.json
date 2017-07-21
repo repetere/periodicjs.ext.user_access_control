@@ -1,0 +1,7 @@
+{
+	"periodicCompatibility":"5.0.0",
+	"periodicDependencies":[{
+    "extname":"periodicjs.ext.login",
+    "version":"~5.0.0"
+  }]
+}

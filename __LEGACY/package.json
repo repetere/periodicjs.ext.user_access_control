@@ -1,0 +1,72 @@
+{
+  "author": {
+    "email": "yaw.etse@gmail.com",
+    "name": "Yaw Joseph Etse",
+    "url": "http://about.me/yawjosephetse"
+  },
+  "bugs": {
+    "url": "https://github.com/typesettin/periodicjs.ext.user_access_control/issues"
+  },
+  "dependencies": {
+  },
+  "description": "A user access control extension for Periodicjs that uses user roles and user privleges to controll access",
+  "devDependencies": {
+    "browserify": "^10.2.4",
+    "chai": "^3.0.0",
+    "grunt": ">=0.4.5",
+    "grunt-browserify": ">=2.1.3",
+    "grunt-contrib-copy": ">=0.5.0",
+    "grunt-contrib-cssmin": ">=0.9.0",
+    "grunt-contrib-jshint": ">=0.10.0",
+    "grunt-contrib-less": ">=0.11.3",
+    "grunt-contrib-uglify": ">=0.4.0",
+    "grunt-contrib-watch": ">=0.6.1",
+    "grunt-jsbeautifier": ">=0.2.7",
+    "grunt-jsdoc": ">=0.5.6",
+    "grunt-newer": ">=0.7.0",
+    "grunt-simple-mocha": ">=0.4.0",
+    "jsdoc": "^3.3.2",
+    "mocha": "^2.2.5",
+    "promisie": "~1.5.3",
+    "uglify-js": "^2.4.15",
+    "uglifyify": "^3.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "c0fe47fbe7c89a646ba22c99dcab160fd891ba73",
+    "tarball": "http://registry.npmjs.org/periodicjs.ext.user_access_control/-/periodicjs.ext.user_access_control-5.9.3.tgz"
+  },
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "gitHead": "324e13b1697cf903eeb28505e783f34e021b3cd5",
+  "homepage": "https://github.com/typesettin/periodicjs.ext.user_access_control",
+  "keywords": [
+    "cms",
+    "content management",
+    "drupal",
+    "periodicjs",
+    "user access control",
+    "wordpress"
+  ],
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "yawetse",
+      "email": "yaw.etse@gmail.com"
+    }
+  ],
+  "name": "periodicjs.ext.user_access_control",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/typesettin/periodicjs.ext.user_access_control.git"
+  },
+  "scripts": {
+    "postinstall": "node install.js",
+    "postuninstall": "node uninstall.js",
+    "test": "mocha -R spec --recursive"
+  },
+  "version": "7.1.0"
+}
