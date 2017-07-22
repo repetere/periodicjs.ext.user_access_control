@@ -40,11 +40,14 @@ function getPrivilegeTransforms() {
 
 function checkPrivileges(options) {
   const { req, entitytype, privileges } = options;
+  const uacSettings = periodic.settings.extensions['periodicjs.ext.user_access_control'];
   let entityTypeCheck = (entitytype && entitytype[req.user.entitytype]) ?
     true :
     entitytype[Object.keys(entitytype)[0]];
   let privilegeChecks = [];
-  if (privileges) {
+  if (uacSettings.allow_admin_overrides && req.user.accounttype === uacSettings.admin_override_accounttype) {
+    privilegeChecks = [];
+  } else if (privileges) {
     if (Array.isArray(req.user.privileges) === false || req.user.privileges.length < 1) {
       privilegeChecks.push(privileges[Object.keys(privileges)[0]]);
     } else {

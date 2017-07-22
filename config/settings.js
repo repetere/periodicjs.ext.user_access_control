@@ -2,6 +2,8 @@
 
 module.exports = {
   settings: {
+    allow_admin_overrides: true,
+    admin_override_accounttype: 'admin',
     prilivege_transforms: {
       pre: {
         get: {
