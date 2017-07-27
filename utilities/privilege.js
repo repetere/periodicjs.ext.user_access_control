@@ -60,7 +60,7 @@ function checkPrivileges(options) {
     throw new Error(entityTypeCheck);
   }
   if (privilegeChecks.length) {
-    throw new Error(privileges[privilegeChecks[0]]);
+    throw new Error(privilegeChecks[0]);
   }
   return true;
 }
