@@ -92,6 +92,7 @@ function getPrivilegesFromRoles(options) {
   return new Promise((resolve, reject) => {
     try {
       const { req, user } = options;
+      user.userroles = user.userroles || [];
       const privilegeIds = user.userroles.reduce((result, userRole) => {
         if (userRole.privileges && userRole.privileges.length) {
           result.push(...userRole.privileges);
