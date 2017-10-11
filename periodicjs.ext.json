@@ -6,5 +6,21 @@
   }],
   "periodic_type": 3,
   "periodic_priority": 10,
-  "periodic_config": {}
+  "periodic_config": {
+    "periodicjs_ext_reactapp": {
+      "navigation": "node_modules/periodicjs.ext.user_access_control/views/reactapp/components/navigation.manifest.js"
+    },
+    "periodicjs_ext_admin": {
+      "User Access Control": [{
+        "link": "/b-admin/data/user_access",
+        "title": "User Access"
+      },{
+        "link": "/b-admin/data/account_access",
+        "title": "Account Access"
+      },{
+        "link": "/b-admin/data/manage_roles",
+        "title": "Manage Roles"
+      }]
+    }
+  }
 }
