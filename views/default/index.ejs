@@ -52,8 +52,8 @@ const entityPage = {
       <thead>
         <tr>
           <th>ID</th>
-          <th>User</th>
-          <th>Email</th>
+          <th>First Name</th>
+          <th>Last Name</th>
           <th colspan="5">Roles</th>
         </tr>
       </thead>
@@ -65,7 +65,7 @@ const entityPage = {
           <tr>
             <td><a href="<%- path.join(request.baseurl,request.parsed.pathname,item._id.toString()).replace('ext/dblogger','data') %>"><%- item._id %></a></td>
             <td><%- item.firstname %></td>
-            <td><%- item.email %></td>
+            <td><%- item.lastname %></td>
             <td colspan="5"><%- item.userroles %></td>
           </tr>
         <%});
