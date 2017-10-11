@@ -52,10 +52,9 @@ const entityPage = {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>User Role ID</th>
-          <th>Privileges</th>
+          <th>User</th>
+          <th>Email</th>
+          <th colspan="5">Roles</th>
         </tr>
       </thead>
       <tbody>
@@ -65,10 +64,9 @@ const entityPage = {
           %>
           <tr>
             <td><a href="<%- path.join(request.baseurl,request.parsed.pathname,item._id.toString()).replace('ext/dblogger','data') %>"><%- item._id %></a></td>
-            <td><%- item.title %></td>
-            <td><%- item.description %></td>
-            <td><%- item.userroleid %></td>
-            <td><%- item.privileges %></td>
+            <td><%- item.firstname %></td>
+            <td><%- item.email %></td>
+            <td colspan="5"><%- item.userroles %></td>
           </tr>
         <%});
       } else{%>
@@ -85,7 +83,7 @@ const entityPage = {
           </th>
           <th>Page <%- entityPage.currentpage %> of <%- entityPage.totalpages %>
           </th>
-          <th colspan="2">Showing <%- (entityPage.limit > entityPage.count)? entityPage.count: entityPage.limit %> of <%- entityPage.count %></th>
+          <th colspan="4">Showing <%- (entityPage.limit > entityPage.count)? entityPage.count: entityPage.limit %> of <%- entityPage.count %></th>
           <th>
           <% if(entityPage.currentpage <= entityPage.totalpages -1){ %>
             <a href="?pagenum=<%- entityPage.currentpage+1 %>">Next Page</a>
