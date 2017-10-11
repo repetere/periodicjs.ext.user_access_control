@@ -12,13 +12,13 @@
     },
     "periodicjs_ext_admin": {
       "User Access Control": [{
-        "link": "/b-admin/data/user_access",
+        "link": "/b-admin/ext/user_access_control/standard_users",
         "title": "User Access"
       },{
-        "link": "/b-admin/data/account_access",
+        "link": "/b-admin/ext/user_access_control/standard_accounts",
         "title": "Account Access"
       },{
-        "link": "/b-admin/data/manage_roles",
+        "link": "/b-admin/ext/user_access_control/standard_userroles",
         "title": "Manage Roles"
       }]
     }

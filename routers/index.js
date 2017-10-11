@@ -2,12 +2,9 @@
 
 const periodic = require('periodicjs');
 const extensionRouter = periodic.express.Router();
-const fs = require('fs-extra');
-const path = require('path');
-const packageJson = fs.readJsonSync(path.join(__dirname,'../package.json'));
+const extRouter = require('./ext');
 
-extensionRouter.all(packageJson.name, (req, res) => {
-  res.send(`EXTENSION ${packageJson.name}`);
-});
+extensionRouter.use('/b-admin/ext/user_access_control', extRouter);
+extensionRouter.use('/b-admin/data', extRouter);
 
 module.exports = extensionRouter;
