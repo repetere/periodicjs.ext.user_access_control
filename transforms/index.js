@@ -63,9 +63,11 @@ function showRolesInTextArea(req) {
     } else if (req.controllerData && req.controllerData.standard_user && req.controllerData.standard_user.userroles) {
       roles = req.controllerData.standard_user.userroles;
     }
-    roles.forEach((role, i) => {
-      roles[i] = role.userroleid;
-    });
+    if (roles.length) {
+      roles.forEach((role, i) => {
+        roles[i] = role.userroleid;
+      });
+    }
     resolve(req);
   })
 }
@@ -102,6 +104,7 @@ function modifyRoles(req) {
                 });
       })
       .then(() => {
+        req.redirectpath = req.originalUrl;
         resolve(req);
       })
       .catch(err => {
