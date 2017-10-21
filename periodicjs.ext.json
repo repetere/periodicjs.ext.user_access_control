@@ -8,7 +8,10 @@
   "periodic_priority": 10,
   "periodic_config": {
     "periodicjs_ext_reactapp": {
-      "navigation": "node_modules/periodicjs.ext.user_access_control/views/reactapp/components/navigation.manifest.js"
+      "navigation": "node_modules/periodicjs.ext.user_access_control/views/reactapp/components/navigation.manifest.js",
+      "manifests" : [ 
+        "node_modules/periodicjs.ext.user_access_control/views/reactapp/manifests/"
+      ]
     },
     "periodicjs_ext_admin": {
       "User Access Control": [{
