@@ -188,7 +188,7 @@ function getAccessPage(options) {
                 component: 'DynamicLayout',
                 // ignoreReduxProps:true,
                 thisprops: {
-                  items:['row'],
+                  items:['cell'],
                 },
                 bindprops:true,
                 props: {

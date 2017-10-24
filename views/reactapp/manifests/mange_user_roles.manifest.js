@@ -208,7 +208,7 @@ module.exports = {
                   component: 'DynamicLayout',
                   // ignoreReduxProps:true,
                   thisprops: {
-                    items:['row'],
+                    items:['cell'],
                   },
                   bindprops:true,
                   props: {
