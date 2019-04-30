@@ -261,11 +261,15 @@ function getModalPage(options) {
   };
 }
 
+const uacSettings = periodic.settings.extensions[ 'periodicjs.ext.user_access_control' ];
+
 module.exports = {
-  containers: {
-    [ `${reactapp.manifest_prefix}ext/uac/account-access` ]: getAccessPage({ entity: 'account' }),
-    [ `${reactapp.manifest_prefix}ext/uac/user-access` ]: getAccessPage({ entity: 'user' }),
-    [ `${reactapp.manifest_prefix}edit-account-access/:id` ]: getModalPage({ entity: 'account' }),
-    [ `${reactapp.manifest_prefix}edit-user-access/:id` ]: getModalPage({ entity: 'user' }),
-  },
+  containers: (uacSettings.use_manifests)
+    ? {
+      [ `${reactapp.manifest_prefix}ext/uac/account-access` ]: getAccessPage({ entity: 'account' }),
+      [ `${reactapp.manifest_prefix}ext/uac/user-access` ]: getAccessPage({ entity: 'user' }),
+      [ `${reactapp.manifest_prefix}edit-account-access/:id` ]: getModalPage({ entity: 'account' }),
+      [ `${reactapp.manifest_prefix}edit-user-access/:id` ]: getModalPage({ entity: 'user' }),
+    }
+    : {},
 };

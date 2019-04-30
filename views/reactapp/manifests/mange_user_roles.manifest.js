@@ -115,176 +115,180 @@ const userRoleForm = (options = {}) => reactappLocals.server_manifest.forms.crea
     : {},
 });
 
+const uacSettings = periodic.settings.extensions[ 'periodicjs.ext.user_access_control' ];
+
 module.exports = {
-  containers: {
-    [`${reactapp.manifest_prefix}ext/uac/manage-roles`]: {
-      layout: {
-        component: 'Container',
-        props: {
-          style: {
-            padding:'6rem 0',
+  containers: (uacSettings.use_manifests)
+    ? {
+      [ `${reactapp.manifest_prefix}ext/uac/manage-roles` ]: {
+        layout: {
+          component: 'Container',
+          props: {
+            style: {
+              padding: '6rem 0',
+            },
           },
-        },
-        children: [
-          reactappLocals.server_manifest.helpers.getPageTitle({
-            styles: {
-              // ui: {}
-            },
-            title: 'Manage User Roles',
-            action: {
-              type: 'modal',
-              title: 'Add User Role',
-              pathname: `${reactapp.manifest_prefix}add-userrole`,
-              buttonProps: {
-                props: {
-                  color:'isSuccess',
-                },
+          children: [
+            reactappLocals.server_manifest.helpers.getPageTitle({
+              styles: {
+                // ui: {}
               },
-            },
-          }),
-          reactappLocals.server_manifest.table.getTable({
-            schemaName: 'standard_userroles',
-            baseUrl:`${reactapp.manifest_prefix}contentdata/standard_userroles?format=json`,
-            asyncdataprops: 'userroles',
-            headers: [
-              {
-                buttons: [
-                  {
-                    passProps: {
-                      onClick: 'func:this.props.createModal',
-                      onclickThisProp:'onclickPropObject',
-                      onclickProps: {
-                        title: 'Edit User Role',
-                        pathname: `${reactapp.manifest_prefix}edit-userrole/:id`,
-                        params: [
-                          {
-                            key: ':id',
-                            val: '_id',
-                          }
-                        ],
-                      },
-                      buttonProps:{
-                        color: 'isInfo',
-                        buttonStyle: 'isOutlined',
-                        icon:'fa fa-pencil',
-                      },
-                    },
-                  }
-                ],
-                sortid: '_id',
-                sortable:true,
-                label: 'ID',
-              },
-              {
-                sortable:true,
-                sortid: 'name',
-                label: 'Name',
-              },
-              {
-                sortable:true,
-                sortid: 'description',
-                label: 'Description',
-                headerStyle: {
-                  maxWidth: 200,
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                },
-                columnStyle: {
-                  maxWidth: 200,
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                },
-              },
-              {
-                sortable:true,
-                sortid: 'userroleid',
-                label: 'User Role ID',
-              },
-              {
-                sortable:true,
-                sortid: 'privileges',
-                label: 'Privileges',
-                customCellLayout: {
-                  component: 'DynamicLayout',
-                  // ignoreReduxProps:true,
-                  thisprops: {
-                    items:['cell'],
-                  },
-                  bindprops:true,
+              title: 'Manage User Roles',
+              action: {
+                type: 'modal',
+                title: 'Add User Role',
+                pathname: `${reactapp.manifest_prefix}add-userrole`,
+                buttonProps: {
                   props: {
-                    style: {
-                      display:'block'
-                    },
-                    layout: {
-                      bindprops:true,
-                      component: 'Tag',
-                      props: {
-                        color: 'isDark',
-                        style: {
-                          margin:'0.25rem'
-                        }
-                      },
-                      children: [
-                        {
-                          bindprops:true,
-                          component: 'span',
-                          thisprops: {
-                            _children:['name']
-                          }
-                        },
-                        {
-                          component: 'span',
-                          children:' (',
-                        },
-                        {
-                          bindprops:true,
-                          component: 'span',
-                          thisprops: {
-                            _children:['userprivilegeid']
-                          }
-                        },
-                        {
-                          component: 'span',
-                          children:')',
-                        },
-                      ]
-                    }
-                  }
+                    color: 'isSuccess',
+                  },
                 },
               },
-            ],
+            }),
+            reactappLocals.server_manifest.table.getTable({
+              schemaName: 'standard_userroles',
+              baseUrl: `${reactapp.manifest_prefix}contentdata/standard_userroles?format=json`,
+              asyncdataprops: 'userroles',
+              headers: [
+                {
+                  buttons: [
+                    {
+                      passProps: {
+                        onClick: 'func:this.props.createModal',
+                        onclickThisProp: 'onclickPropObject',
+                        onclickProps: {
+                          title: 'Edit User Role',
+                          pathname: `${reactapp.manifest_prefix}edit-userrole/:id`,
+                          params: [
+                            {
+                              key: ':id',
+                              val: '_id',
+                            }
+                          ],
+                        },
+                        buttonProps: {
+                          color: 'isInfo',
+                          buttonStyle: 'isOutlined',
+                          icon: 'fa fa-pencil',
+                        },
+                      },
+                    }
+                  ],
+                  sortid: '_id',
+                  sortable: true,
+                  label: 'ID',
+                },
+                {
+                  sortable: true,
+                  sortid: 'name',
+                  label: 'Name',
+                },
+                {
+                  sortable: true,
+                  sortid: 'description',
+                  label: 'Description',
+                  headerStyle: {
+                    maxWidth: 200,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  },
+                  columnStyle: {
+                    maxWidth: 200,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  },
+                },
+                {
+                  sortable: true,
+                  sortid: 'userroleid',
+                  label: 'User Role ID',
+                },
+                {
+                  sortable: true,
+                  sortid: 'privileges',
+                  label: 'Privileges',
+                  customCellLayout: {
+                    component: 'DynamicLayout',
+                    // ignoreReduxProps:true,
+                    thisprops: {
+                      items: [ 'cell' ],
+                    },
+                    bindprops: true,
+                    props: {
+                      style: {
+                        display: 'block'
+                      },
+                      layout: {
+                        bindprops: true,
+                        component: 'Tag',
+                        props: {
+                          color: 'isDark',
+                          style: {
+                            margin: '0.25rem'
+                          }
+                        },
+                        children: [
+                          {
+                            bindprops: true,
+                            component: 'span',
+                            thisprops: {
+                              _children: [ 'name' ]
+                            }
+                          },
+                          {
+                            component: 'span',
+                            children: ' (',
+                          },
+                          {
+                            bindprops: true,
+                            component: 'span',
+                            thisprops: {
+                              _children: [ 'userprivilegeid' ]
+                            }
+                          },
+                          {
+                            component: 'span',
+                            children: ')',
+                          },
+                        ]
+                      }
+                    }
+                  },
+                },
+              ],
          
-          }),
-        ],
+            }),
+          ],
+        },
+        resources: {
+          userroles: `${reactapp.manifest_prefix}contentdata/standard_userroles?format=json`,
+        },
+        pageData: {
+          title: 'Manage User Roles',
+        },
       },
-      resources: {
-        userroles:`${reactapp.manifest_prefix}contentdata/standard_userroles?format=json`,
+      [ `${reactapp.manifest_prefix}add-userrole` ]: {
+        layout: {
+          component: 'Content',
+          children: [ userRoleForm(), ],
+        },
+        resources: {},
+        pageData: {
+          title: 'Add a User Role',
+        },
       },
-      pageData: {
-        title:'Manage User Roles',
+      [ `${reactapp.manifest_prefix}edit-userrole/:id` ]: {
+        layout: {
+          component: 'Content',
+          children: [ userRoleForm({ update: true, }), ],
+        },
+        resources: {
+          userroledata: `${reactapp.manifest_prefix}contentdata/standard_userroles/:id?format=json`,
+        },
+        pageData: {
+          title: 'Add a User Role',
+        },
       },
-    },
-    [`${reactapp.manifest_prefix}add-userrole`]: {
-      layout: {
-        component: 'Content',
-        children:[ userRoleForm(), ],
-      },
-      resources: {},
-      pageData: {
-        title:'Add a User Role',
-      },
-    },
-    [`${reactapp.manifest_prefix}edit-userrole/:id`]: {
-      layout: {
-        component: 'Content',
-        children:[ userRoleForm({ update:true, }), ],
-      },
-      resources: {
-        userroledata:`${reactapp.manifest_prefix}contentdata/standard_userroles/:id?format=json`,
-      },
-      pageData: {
-        title:'Add a User Role',
-      },
-    },
-  },
+    }
+    : {},
 };

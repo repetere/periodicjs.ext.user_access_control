@@ -3,6 +3,7 @@
 module.exports = {
   settings: {
     allow_admin_overrides: true,
+    use_manifests: true,
     admin_override_accounttype: 'admin',
     prilivege_transforms: {
       pre: {
